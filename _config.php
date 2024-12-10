@@ -1,8 +1,8 @@
 <?php
 define("DB_HOST", "localhost");
-define("DB_USERNAME", "ztk_comp_sk");
-define("DB_PASSWORD", "ZTK748596heslo");
-define("DB_DATABASE_NAME", "ztk_comp_sk");
+define("DB_USERNAME", "");
+define("DB_PASSWORD", "");
+define("DB_DATABASE_NAME", "");
 
 // Create connection
 $spojenie = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE_NAME);
