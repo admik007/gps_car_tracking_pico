@@ -10,13 +10,9 @@ $HTTP='http://';
 else {
 $HTTP='https://';
 }
-$MAPA=" '".$HTTP."maps.ztk-comp.sk/{z}/{x}/{y}.png', { maxZoom: 18,";
 
-
-
-//$MAPA=" 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18,";
+$MAPA=" 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18,";
 //$MAPA=" 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { maxZoom: 17,";
-
 
 
 if(isset($_GET["id"])) $id=$_GET["id"];
