@@ -22,3 +22,13 @@ CREATE TABLE `gps_tracking` (
   `temprpi` char(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `loadrpi` char(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Indexes for table `gps_tracking`
+ALTER TABLE `gps_tracking`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+-- AUTO_INCREMENT for table `gps_tracking`
+ALTER TABLE `gps_tracking`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+COMMIT;
