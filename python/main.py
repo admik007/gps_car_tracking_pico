@@ -43,7 +43,7 @@ MODEM_SIGNAL = False
 
 
 # SERVER
-HOST="http://gps.ztk-comp.sk/"
+HOST="http://gps.host.domain/"
 
 
 # WATCHDOG
@@ -194,15 +194,10 @@ def http_get_sim(url):
  send_at('AT+HTTPPARA=\"CID\",1', 'OK')
  send_at('AT+HTTPPARA=\"URL\",\"'+URL+'\"', 'OK')
  if send_at('AT+HTTPACTION=0', '200', 4000):
-  print("AAA: 1")
   MODEM_SIGNAL = True
-#  print("AAA: 2")
 #  gsm_module.write(bytearray(b'AT+HTTPREAD\r\n'))
-#  print("AAA: 3")
 #  rec_buff = wait_resp_info(5000)
-#  print("AAA: 4")
 #  print("resp is :", rec_buff.decode())
-#  print("AAA: 5")
 #  if (DEBUG == 1): 
 #   print('>>>>>>>> URL send done <<<<<<<< ')
   print("Get HTTP successfull\n")
@@ -324,8 +319,6 @@ def bearer_config():
 #####################  DEFINITION OF FUNCTIONS  #####################
 #####################################################################
 
-#check_start()
-#check_network()
 bearer_config()
 
 #####################################################################
@@ -529,14 +522,6 @@ while True:
 
   if (counter > counter_limit):
    machine.reset()
-#   counter = 0
-#   while True:
-#    print(str(counter))
-#    led.value(1)
-#    time.sleep(.5)
-#    led.value(0)
-#    time.sleep(.5)
-#    counter+=1
 ######################### DO REQUEST TO URL #########################
 #####################################################################
 
