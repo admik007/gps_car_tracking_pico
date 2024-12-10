@@ -147,124 +147,19 @@ if (!empty($_GET["time"])) {
  $time=date ('Y-m-d\TH:i:s\Z',$epoch);
 
  switch ($devicerpi) {
-  case "000000001ff7c174":
-   $device='NODE01';
-   break;
-
-  case "00000000XXXXXXX2":
-   $device='NODE02';
-   break;
-
-  case "00000000XXXXXXX3":
-   $device='NODE03';
-   break;
-
-  case "00000000b9a53cd6":
-   $device='NODE04';
-   break;
-
-  case "0000000000000004":
-   $device='NODE05';
-   break;
-
-  case "00000000c8490d90":
-   $device='NODE06';
-   break;
-
-  case "00000000c545db48":
-   $device='NODE07';
-   break;
-
-  case "000000000fc36336":
-   $device='NODE08';
-   break;
-
-  case "00000000279ea942":
-   $device='NODE09';
-   break;
-
-  case "00000000ac48fd74":
-   $device='NODE10';
-   break;
-
-  case "00000000XXXXXX11":
-   $device='NODE11';
-   break;
-
-  case "00000000XXXXXX12":
-   $device='NODE12';
-   break;
-
-  case "00000000d43572d2":
-   $device='NODE13';
-   break;
-
-  case "00000000897db5d7":
-   $device='NODE14';
-   break;
-
-  case "0000000051dbb57b":
-   $device='NODE15';
-   break;
-
-
-  case "e661640843228b25":
+  case "e661385283997828":
    $device='RPIPC01';
    break;
 
-  case "e6616408436a6d21":
+  case "e6616408438f952e":
    $device='RPIPC02';
    break;
-
-  case "e6614c311b817339":
-   $device='RPIPC03';
-   break;
-
-  case "e6614c311b956c39":
-   $device='RPIPC04';
-   break;
-
-  case "e661640843632921":
-   $device='RPIPC05';
-   break;
-
-  case "e66164084360a42e":
-   $device='RPIPC06';
-   break;
-
-  case "e6616408432e7829":
-   $device='RPIPC07';
-   break;
-
-  case "e6616408438f952e":
-   $device='RPIPC08';
-   break;
-
-  case "e66164084387252d":
-   $device='RPIPC09';
-   break;
-
-  case "e661385283997828":
-   $device='RPIPC10';
-   break;
-
-
-  case "MAPA":
-   $device='MAPA';
-   break;
-
-  case "MAPA2":
-   $device='MAPA2';
-   break;
-
-#  default:
-#   $device=' UNKNOWN';
  }
 
 
  $DEVI=strstr( $devicerpi, "000000" );
 
- if (($ip == '176.10.42.177') OR ($ip == '5.75.148.0') OR ($ip == '2a01:4f8:1c1b:699c::1') OR ($ip == '94.130.228.164') OR ($ip == '2a01:4f8:1c1c:9ce::1')){
+ if (($ip == 'xxx.xxx.xxx.xxx') OR ($ip == 'xxx.xxx.xxx.xxx') OR ($ip == 'xxxx:xxxx:xxxx:xxxx:xxxx:xxxx')){
   list($DATE, $TIME) = explode("T", $time);
   echo "D: $DATE <br>\n";
   echo "T: $TIME <br>\n";
@@ -277,9 +172,6 @@ if (!empty($_GET["time"])) {
  mysqli_query($spojenie,"INSERT INTO $MySQL_table1 VALUES('0','$lat','$lon','$alt','$acc','$spd','$sat','$time','$bat','$ip','$year','$month','$day','$hour','$minute','$second','$device','$provider','$direction','$devicerpi','$temprpi','$loadrpi')");
  echo " DeviceRPI: ".$devicerpi."<br>\n";
  echo " Device:    ".$device."<br>\n";
-# echo " Zapisane:  ".$time."<br>\n";
-# echo " TimeT:     ".$timeT."<br>\n";
-# echo " TimeZ:     ".$timeZ."<br>\n";
  echo " MySQL done - NODE<br><br>";
 
 
@@ -342,37 +234,26 @@ if (!empty($_GET["time"])) {
 
 
  if ($tracking_list_db_row_total < '1500') {
-#  $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE devicerpi='$devicerpi' AND lat not like '0.0%' AND time like '$year-$month-$day%' GROUP BY DATE_FORMAT(`time`, '%H:%i:%s') order by time desc");
   $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE devicerpi='$devicerpi' AND time like '$year-$month-$day%' GROUP BY DATE_FORMAT(`time`, '%H:%i:%s') order by time desc");
  }
 
  if ($tracking_list_db_row_total > '1501') {
   if ($tracking_list_db_row_total < '2500') {
-#   $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE devicerpi='$devicerpi' AND lat not like '0.0%' AND time like '$year-$month-$day%' GROUP BY DATE_FORMAT(`time`, '%H:%i') order by time desc");
    $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE devicerpi='$devicerpi' AND time like '$year-$month-$day%' GROUP BY DATE_FORMAT(`time`, '%H:%i') order by time desc");
   }
  }
 
  if ($tracking_list_db_row_total > '2501') {
   if ($tracking_list_db_row_total < '3200') {
-#   $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE devicerpi='$devicerpi' AND lat not like '0.0%' AND time like '$year-$month-$day%' AND id mod 3 = 0 GROUP BY DATE_FORMAT(`time`, '%H:%i') order by time desc");
    $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE devicerpi='$devicerpi' AND time like '$year-$month-$day%' AND id mod 3 = 0 GROUP BY DATE_FORMAT(`time`, '%H:%i') order by time desc");
   }
  }
 
  if ($tracking_list_db_row_total > '3201') {
-#  $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE devicerpi='$devicerpi' AND lat not like '0.0%' AND time like '$year-$month-$day%' AND id mod 5 = 0 GROUP BY DATE_FORMAT(`time`, '%H:%i') order by time desc");
   $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE devicerpi='$devicerpi' AND time like '$year-$month-$day%' AND id mod 5 = 0 GROUP BY DATE_FORMAT(`time`, '%H:%i') order by time desc");
  }
 
-
-
-
-# $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE device='$device' AND lat != '0.0' AND time like '$year-$month-$day%' GROUP BY DATE_FORMAT(`time`, '%H:%i') order by time desc");
-# $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE device='$device' AND lat != '0.0' AND time like '$year-$month-$day%' GROUP BY DATE_FORMAT(`time`, '%H:%i:%s') order by time desc");
-# $tracking_list_db = mysqli_query($spojenie,"SELECT * FROM $MySQL_table WHERE device='$device' AND time like '$year-$month-$day%' GROUP BY DATE_FORMAT(`time`, '%H:%i') order by time desc");
  $tracking_list_db_row = mysqli_num_rows ($tracking_list_db);
-
  $tracking_list_db_devicesrpi = mysqli_query($spojenie,"SELECT DISTINCT(devicerpi) FROM $MySQL_table WHERE devicerpi != '' AND time like '$year-$month-$day%' order by device asc");
  $tracking_list_db_devicesrpi_row = mysqli_num_rows ($tracking_list_db_devicesrpi);
 
@@ -687,25 +568,7 @@ $km_st=0;
 ############## GPS TO ADDRESS ##############
 ############################################
 
-############################################
-############## IP TO PROVIDER ##############
-############################################
   $IP=$entries['ip'];
-#  $ispprovider = json_decode(file_get_contents("http://ipinfo.io/{$IP}"));
-
-#  $ISP_DB=mysqli_query($spojenie,"SELECT provider FROM $MySQL_table4 WHERE ip='$IP' LIMIT 1;");
-#  $ISP_DB_ROW = mysqli_num_rows ($ISP_DB);
-#  if ($ISP_DB_ROW == "1" ) {
-#   $ISP=mysqli_fetch_array ($ISP_DB, MYSQLI_ASSOC);
-#   $ispprovider=$ISP['provider'];
-#  } else {
-#   $ispprovider = json_decode(file_get_contents("http://ipinfo.io/{$IP}"));
-#   echo "INSERT INTO $MySQL_table4 VALUES('0','$IP','$ispprovider'); <br>";
-#   mysqli_query($spojenie,"INSERT INTO $MySQL_table4 VALUES('0','$IP','$ispprovider');");
-#  }
-############################################
-############## IP TO PROVIDER ##############
-############################################
   if ($entries['provider'] == 'network') { $bgmiesto='#f0f000'; }
   if ($entries['bat'] < '20') { $bgmiesto='#ff8000';}
   if ($entries['bat'] < '10') { $bgmiesto='#ff0000';}
@@ -739,13 +602,10 @@ if ($entries['lat'] == '0.000000' ){
 
  switch ($devicerpi) {
   case "e661385283997828":
-   $SPZ="KE978IE";
+   $SPZ="AA001AA";
    break;
   case "e6616408438f952e":
-   $SPZ="KE482LM";
-   break;
-  case "e66164084387252d":
-   $SPZ="AA116LJ";
+   $SPZ="AA002AA";
    break;
 }
 
