@@ -1,8 +1,8 @@
 ### SERVER ###
-#OS=Debian_12.8
-#Apache=2.4.62-1~deb12u2
-#PHP=8.2.26-1~deb12u1
-#MariaDB=1:10.11.9-0+deb12u1 \n
+*OS=Debian_12.8
+*Apache=2.4.62-1~deb12u2
+*PHP=8.2.26-1~deb12u1
+*MariaDB=1:10.11.9-0+deb12u1 \n
 
 ### DEVICES ###
 #RPI    = Raspberry Pi Pico WH \n
